@@ -15,6 +15,9 @@ public class LopRepository {
     public List<Lop> getAll(){
         return  session.createQuery("FROM Lop").list();
     }
+    public Lop getOne(Integer id){
+        return  session.find(Lop.class, id);
+    }
 
     public static void main(String[] args) {
         System.out.println(new LopRepository().getAll());

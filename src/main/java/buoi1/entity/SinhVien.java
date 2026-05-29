@@ -23,6 +23,10 @@ public class SinhVien {
     private String diaChi;
     @Column(name = "gioi_tinh")
     private Boolean gioiTinh;
-    @Column(name = "lop_id")
-    private Integer lopId;
+    //@Column(name = "lop_id")//FK
+    //Mapping mối quan hệ ORM (Object Relational Mapping) chuẩn
+    @ManyToOne//Quan hệ: Nhiều Sinh viên - 1 Lớp
+    @JoinColumn(name = "lop_id", referencedColumnName = "id")
+    //Cột khóa ngoại "lop_id" trong bảng Sinh viên -> Tham chiếu tới cột "id" bảng Lớp
+    private Lop lop;
 }

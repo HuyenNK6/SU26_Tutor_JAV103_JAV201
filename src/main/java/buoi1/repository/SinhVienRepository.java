@@ -23,6 +23,19 @@ public class SinhVienRepository {
         //HQL: thao tác với Class Java, ko thao tác trực tiếp vs tên bảng sinh_vien
         return session.createQuery("FROM SinhVien").list();
     }
+    public SinhVien getOne(Integer id){
+        return session.find(SinhVien.class, id);
+    }
+    public void add(SinhVien sv){
+        try {
+            session.getTransaction().begin();
+            session.save(sv);
+            session.getTransaction().commit();
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         //test nhanh
